@@ -3,6 +3,7 @@ from typing import Annotated, Optional
 from bson import Decimal128
 from pydantic import AfterValidator, Field
 from store.schemas.base import BaseSchemaMixin, OutSchema
+from datetime import datetime 
 
 
 class ProductBase(BaseSchemaMixin):
@@ -10,6 +11,7 @@ class ProductBase(BaseSchemaMixin):
     quantity: int = Field(..., description="Product quantity")
     price: Decimal = Field(..., description="Product price")
     status: bool = Field(..., description="Product status")
+    updated_at: Optional[datetime] = Field(None, description="Última atualização") 
 
 
 class ProductIn(ProductBase, BaseSchemaMixin):
